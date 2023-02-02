@@ -4,6 +4,8 @@ import 'package:delivery_app/app/models/product_model.dart';
 import 'package:delivery_app/app/pages/home/widgets/delivery_product_tile.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/ui/helpers/messages.dart';
+
 class HomePage extends StatefulWidget {
 
   const HomePage({ Key? key }) : super(key: key);
@@ -12,15 +14,20 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with Loader{
+class _HomePageState extends State<HomePage> with Loader, Messages{
    @override
    Widget build(BuildContext context) {
        return Scaffold(
            appBar: DeliveryAppbar(),
            floatingActionButton: FloatingActionButton(onPressed: () async{
-            showLoader();
+            // showLoader();
+            // await Future.delayed(Duration(seconds: 2));
+            // hideLoader();
+            showError('Um Erro aconteceu');
             await Future.delayed(Duration(seconds: 2));
-            hideLoader();
+            showInfo('Um Erro aconteceu');
+            await Future.delayed(Duration(seconds: 2));
+            showSuccess('Um Erro aconteceu');
            }),
            body: Column(
             children: [
